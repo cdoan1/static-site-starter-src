@@ -10,7 +10,31 @@
 
 !!! note
 
-    See this diagram to see the relationship between MCH/MCE and the interconnected pods and namespaces
+    
+
+![acm_24_argocd_appsub_helmrelease_deployment.png](./images/acm_24_argcd_appsub_helmrelease_deployment.png)
+
+```mermaid
+graph LR
+    MCH[MCH] -->|Subscribe| APPSUB_A(APPSUB_A)
+    MCH[MCH] -->|Subscribe| APPSUB_B(APPSUB_B)
+    MCH[MCH] -->|Subscribe| APPSUB_C(APPSUB_C)
+    MCH[MCH] -->|Subscribe| APPSUB_D(APPSUB_D)
+    MCH[MCH] -->|Subscribe| APPSUB_E(APPSUB_E)
+    APPSUB_A[APPSUB_A] --> HELM_A[HELM_A]
+    APPSUB_B[APPSUB_B] --> HELM_B[HELM_B]
+    APPSUB_C[APPSUB_C] --> HELM_C[HELM_C]
+    APPSUB_D[APPSUB_D] --> HELM_D[HELM_D]
+    APPSUB_E[APPSUB_E] --> HELM_E[HELM_E]
+    
+    MCE[MCE]
+    
+    
+    %% B --> C{Let me think}
+    %% C -->|One| D[Laptop]
+    %% C -->|Two| E[iPhone]
+    %% C -->|Three| F[fa:fa-car Car]
+```
 
 - The MCH and MCE reflect the deploy time status of RHACM. We can derive the instantious pod state weither they are running or crashing, and historically if the pods have a history of restarting. From this we cannot tell if the internal function are nominal.
 - To determine ACM Heath from metrics and utilization, the Openshift Monitoriing components can be inspected. If ACM Observability is enabled, then the ACM Hub (local-cluster) is aggregated with the rest of the fleet data and available in the aggregate Grafana dashboard.
