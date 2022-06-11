@@ -10,7 +10,7 @@
 
 <!-- ![<img src="https://cdoan1.github.io/static-site-starter-src/images/acm_24_argcd_appsub_helmrelease_deployment.png">](./images/acm_24_argcd_appsub_helmrelease_deployment.png "Image 1: ACM on ArgoCD") -->
 
-[![Image 1](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argcd_appsub_helmrelease_deployment.png)](./images/acm_24_argcd_appsub_helmrelease_deployment.png "Image 1: ACM on ArgoCD")
+[![Image 1](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argocd_appsub_helmrelease_deployment.png)](./images/acm_24_argocd_appsub_helmrelease_deployment.png "Image 1: ACM on ArgoCD")
 
 <!-- !!! note
 
