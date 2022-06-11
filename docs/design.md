@@ -6,11 +6,11 @@ Reference: [https://www.redhat.com/en/blog/how-does-red-hat-support-day-2-operat
 
 ### Planning - How do we do Ops
 
-- We use a single github repository to contain all infrastructure and configuration data.
-- We define kustomization overlays for each distinct deployment targets (stage and regions).
+- We use a multiple github repository to allow us to deploy and operatoe RHACM.
+- For application and configuration data, we define kustomization overlays to cover each distinct deployment targets. Targets make up different stage environments or different region environments.
 - We use Ansible Automation Platform to trigger Ansible Playbooks to build the infrastructure that make up the management components. This includes the ansible playbook to deploy OCP as a private cluster on Azure. We also define ansible playbooks to import AKS clusters into ACM. We need to support multiple ACM deployments across multiple regions.
-- To limit costs, We support a two stage deployment workflow: development and production.
-- Developers are still able to deploy sandbox environments.
+- To limit costs, We support a two stage deployment workflow: development and production. Developers are still able to deploy sandbox environments, using an internal RHACM infrastructure cluster, with support for cluster pools.
+- We develop in the cloud.
 - For the AOC project we use gitops with Openshift Gitops to deploy RHACM workload and configuration data. The image below is a sample the current set of ArgoCD applications we have defined.
 
 [![Image 0](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argocd_applications.png)](./images/acm_24_argocd_applications.png)
