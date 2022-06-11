@@ -31,7 +31,7 @@ edit_uri: edit/main/docs
 repo_name: cdoan1/static-site-starter-src
 markdown_extensions:
 - toc:
-    toc_depth: "2-3"
+    toc_depth: "2-4"
 - attr_list:
 - pymdownx.highlight
 - pymdownx.inlinehilite

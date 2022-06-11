@@ -6,14 +6,24 @@ Reference: [https://www.redhat.com/en/blog/how-does-red-hat-support-day-2-operat
 
 ### Planning - How do we do Ops
 
+#### Project: AOC
+
 - We use a multiple github repository to allow us to deploy and operatoe RHACM.
 - For application and configuration data, we define kustomization overlays to cover each distinct deployment targets. Targets make up different stage environments or different region environments.
 - We use Ansible Automation Platform to trigger Ansible Playbooks to build the infrastructure that make up the management components. This includes the ansible playbook to deploy OCP as a private cluster on Azure. We also define ansible playbooks to import AKS clusters into ACM. We need to support multiple ACM deployments across multiple regions.
-- To limit costs, We support a two stage deployment workflow: development and production. Developers are still able to deploy sandbox environments, using an internal RHACM infrastructure cluster, with support for cluster pools.
+- To limit costs, We support a two stage deployment workflow: development and production. Developers are still able to deploy sandbox environments, using an internal RHACM infrastructure cluster, with has support for cluster pools.
 - We develop in the cloud.
 - For the AOC project we use gitops with Openshift Gitops to deploy RHACM workload and configuration data. The image below is a sample the current set of ArgoCD applications we have defined.
 
 [![Image 0](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argocd_applications.png)](./images/acm_24_argocd_applications.png)
+
+#### Project: KCP
+
+- This project leverages an existing RHACM infrastructure to deploy the public OCP clusters into which we will deploy the RHACM instance to support the project. The initial OCP clusters are detached from the infrastrucutre RHACM.
+- THe deployment of RHACM into OCP clusters will be managed by Openshift Pipelines.
+- Openshift Pipeline will deploy Openshift Gitops, and similar to the AOC project, we will use Argocd to handle the rollout of ACM and ACM configuration.
+
+#### Commonailty across all RHACM deployments
 
 ### Planning - Sizing
 
@@ -25,6 +35,30 @@ Reference: [https://www.redhat.com/en/blog/how-does-red-hat-support-day-2-operat
 ## Day 1 Operations
 
 ### New Environment Deployments
+
+- The ansible project https://github.com/rcarrata/ocp4-azure-ipi was forked to https://github.com/stolostron/ocp4-azure-ipi and is used to deploy OCP clusters. Red Hat Ansibile Automation Platform is used to perform the Day 1 deployment of the Openshift Clusters.
+- An ansible playbook from REPO is used to bootstrap the Openshift Gitops. Openshift Gitops handles rolling out and maintain the set of application and configuration to the ACM hub cluster, or local cluster.
+- ACM policy is used for maintain configuration across the fleet of managed clusters.
+
+Project: AOC
+
+```mermaid
+graph LR
+    AAP --> |IPI| OCP
+    AAP --> |Openshift GitOps| OCP
+    OCP --> |Application & Configuration| OCP
+    OCP --> |Policy| FLEET
+```
+
+Project: KCP
+```mermaid
+graph LR
+    RHACM --> OCP
+    PIPELINE --> |Openshift GitOps| OCP
+    OCP --> |Application & Configuration| OCP
+    OCP --> |Policy| FLEET
+```
+
 
 ## Day 2 Operations
 
