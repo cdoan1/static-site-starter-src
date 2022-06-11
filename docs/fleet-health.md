@@ -2,7 +2,7 @@
 
 ## Determining ACM Health
 
-- The Red Hat Advanced Cluster Management product is deliverated as an Operator Hub Operator.
+- The Red Hat Advanced Cluster Management product is delivered as an Operator Hub based operator.
 - The Operator is deployed with a Subscription defintion.
 - The instance Operand manifest is applied, requiring only a reference to an image pull secret.
 - In the 2.4 release, we can verify the state of the ACM deployment by monitoring the status output of the multiclusterhub CR. The multiclusterhub CR reflects the state of the `MulticlusterHub Operator`, or **MCH**. If all the ACM components are successfully deployed, then the final status of the multiclusterhub CR will be **Running**. A state of `Progressing` indicates that the install process has not yet completed. A `Blocked` status indicates that the install or upgrade process was interrupted due to missing requirement or conflict that prevents the process from starting.
