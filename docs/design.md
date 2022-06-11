@@ -45,7 +45,7 @@ Project: AOC
 ```mermaid
 graph LR
     AAP --> |OCP IPI| OCP
-    AAP --> |Openshift GitOps| OCP
+    AAP --> |Openshift GitOps| OCP[OCP & ACM]
     OCP --> |ArgoCD - Application & Configuration| OCP
     OCP --> |Policy| FLEET
 ```
@@ -53,7 +53,7 @@ graph LR
 Project: KCP
 ```mermaid
 graph LR
-    RHACM --> |OCP IPI| OCP
+    RHACM[RHACM*] --> |OCP IPI| OCP[OCP & ACM]
     PIPELINE --> |Openshift GitOps| OCP
     OCP --> |ArgoCD - Application & Configuration| OCP
     OCP --> |Policy| FLEET
