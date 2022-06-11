@@ -6,6 +6,8 @@ Reference: [https://www.redhat.com/en/blog/how-does-red-hat-support-day-2-operat
 
 ### Planning - How do we do Ops
 
+- We use a single github repository to contain all infrastructure and configuration data.
+- We define kustomization overlays for each distinct deployment targets (stage and regions).
 - We use Ansible Automation Platform to trigger Ansible Playbooks to build the infrastructure that make up the management components. This includes the ansible playbook to deploy OCP as a private cluster on Azure. We also define ansible playbooks to import AKS clusters into ACM. We need to support multiple ACM deployments across multiple regions.
 - To limit costs, We support a two stage deployment workflow: development and production.
 - Developers are still able to deploy sandbox environments.
