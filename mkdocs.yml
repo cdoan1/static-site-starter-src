@@ -11,7 +11,7 @@ plugins:
 docs_dir: docs
 repo_url: https://github.com/cdoan1/static-site-starter-src
 edit_uri: edit/main/docs
-repo_name: cdoan1/static-site-starter
+repo_name: cdoan1/static-site-starter-src
 markdown_extensions:
 - toc:
     toc_depth: "2-2"

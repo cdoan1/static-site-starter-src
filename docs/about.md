@@ -65,3 +65,21 @@ Cephisi relictum favilla ripas ferarumque.
 
 Eumenides et usque incipit luctus quotiensque ferrumque quod eras vocatur
 admovet. Te abibo oblita, sub et Argo est, ait feratur.
+
+## Mermaid Diagrams
+
+How to write Mermaid diagrams
+
+- For instructions on how to make a diagram, see the official website. https://mermaid-js.github.io/mermaid/#/
+- If you are not familiar, see the n00bs' introduction to mermaid.
+- In case of doubt, you will want to test your diagrams in the Mermaid Live Editor https://mermaid-js.github.io/mermaid-live-editor.
+
+This is some new document
+
+```mermaid
+graph TD
+A[Client] --> B[Load Balancer]
+B --> C[Server01]
+B --> D[Server02]
+```
+
