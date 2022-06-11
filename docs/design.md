@@ -11,7 +11,7 @@ Reference: [https://www.redhat.com/en/blog/how-does-red-hat-support-day-2-operat
 - Developers are still able to deploy sandbox environments.
 - For the AOC project we use gitops with Openshift Gitops to deploy RHACM workload and configuration data. The image below is a sample the current set of ArgoCD applications we have defined.
 
-[![Image 1](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argocd_applications.png)](./images/acm_24_argocd_applications.png "Image 1: Applications")
+[![Image 0](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argocd_applications.png)](./images/acm_24_argocd_applications.png)
 
 ### Planning - Sizing
 
