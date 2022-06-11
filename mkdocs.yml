@@ -5,6 +5,8 @@ theme:
   - navigation.tabs
   - navigation.indexes
   - content.code.annotate
+  - search.suggest
+  - search.highlight
   icon:
     admonition:
       alert: octicons/alert-24
