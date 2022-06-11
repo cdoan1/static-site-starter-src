@@ -8,11 +8,14 @@
 - In the 2.4 release, we can verify the state of the ACM deployment by monitoring the status output of the multiclusterhub CR. The multiclusterhub CR reflects the state of the `MulticlusterHub Operator`, or **MCH**. If all the ACM components are successfully deployed, then the final status of the multiclusterhub CR will be **Running**. A state of `Progressing` indicates that the install process has not yet completed. A `Blocked` status indicates that the install or upgrade process was interrupted due to missing requirement or conflict that prevents the process from starting.
 - In the 2.5 release, the cluster-lifecycle subcomponent was separated out as a standalone product component called `Multicluster Engine`, with a short name short name of **MCE**. When we deploy RHACM 2.5, both product component operators will be deployed. The `Multiclusterhub` operator and the `Multicluster Engine` operator. The **MCH** will refect the same status as before, with **Running** indicating sucessful completion of install or upgrade. The **MCE** will show a status of **Available** to indicate that its install/upgrade processing has completed successfully.
 
-!!! note
+<!-- ![<img src="https://cdoan1.github.io/static-site-starter-src/images/acm_24_argcd_appsub_helmrelease_deployment.png">](./images/acm_24_argcd_appsub_helmrelease_deployment.png "Image 1: ACM on ArgoCD") -->
 
-    
+[![Image 1](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argcd_appsub_helmrelease_deployment.png)](./images/acm_24_argcd_appsub_helmrelease_deployment.png "Image 1: ACM on ArgoCD")
 
-![acm_24_argocd_appsub_helmrelease_deployment.png](./images/acm_24_argcd_appsub_helmrelease_deployment.png)
+<!-- !!! note
+
+    Reference to the [Image](https://cdoan1.github.io/static-site-starter-src/images/acm_24_argcd_appsub_helmrelease_deployment.png) -->
+
 
 ```mermaid
 graph LR
@@ -37,6 +40,7 @@ graph LR
 ```
 
 - The MCH and MCE reflect the deploy time status of RHACM. We can derive the instantious pod state weither they are running or crashing, and historically if the pods have a history of restarting. From this we cannot tell if the internal function are nominal.
+- Because we use Openshift Gitops to deploy RHACM as an ArgoCD application, we also inspect ArgoCD to determine the immediate state of the ACM component deployment (See Image 1 above).
 - To determine ACM Heath from metrics and utilization, the Openshift Monitoriing components can be inspected. If ACM Observability is enabled, then the ACM Hub (local-cluster) is aggregated with the rest of the fleet data and available in the aggregate Grafana dashboard.
 
 ### What is needed
