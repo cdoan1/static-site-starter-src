@@ -23,4 +23,17 @@
 - There is no specific dashboard that shows data for the ACM components. Up to now, we manually create the view, without ever persisting the views to a reusable custom dashboard.
 
 
+## Determine Fleet Health
+
+- In order to review the fleet health or status, we can inspect ACM and Observability Grafana dashboard.
+- The ACM cluster view indicates the current state of imported clusters, if they are `Ready`, or not `Ready`.
+- The Goverance and Application views indicates the state of policy compliance and applications respectiveliy, across the fleet.
+- Finally, the Observability dashboard aggregates metrics data from the fleet in a single pane of glass.
+
+### What is needed
+
+- The SRE will need to define custom dashboards to display views specific to their needs. Workload metrics data is collected, but the out of the box Openshift dashboards is a general view.
+- You workload components may not export useful data, so you will likely go through a cycle of improvement, and re-render dashboard view.
+- Since we started with AOC/AAP, we have not produced any new custom dashboards, beyond the AAP golden signals.
+- The process to create a custom dashboard, and exported out to source repo, and imported back in is captured as a script. But wouldn't this be better if its rolled up in the Openshift cluster as an Openshift Pipeline (tekton).
 
