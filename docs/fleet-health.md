@@ -30,6 +30,10 @@
 - The Goverance and Application views indicates the state of policy compliance and applications respectiveliy, across the fleet.
 - Finally, the Observability dashboard aggregates metrics data from the fleet in a single pane of glass.
 
+!!! note
+
+    There is one important notion that our work has highlighted. ACM as a system does not represent the source of truth clusters in the enterprise. We can import clusters from different cloud providers and even on-prem sources, but those providers will be the source of truth of their domain. ACM can span providers, but still, does not represent a source of truth. ACM is only aware of what is given it. Clusters can disappear. ACM does have the capability to create new clusters via the hive component or assisted installer. 
+
 ### What is needed
 
 - The SRE will need to define custom dashboards to display views specific to their needs. Workload metrics data is collected, but the out of the box Openshift dashboards is a general view.
