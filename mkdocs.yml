@@ -1,3 +1,31 @@
 site_name: static-site-starter
 theme:
   name: material
+  features:
+  - navigation.tabs
+  - navigation.indexes
+  - content.code.annotate
+plugins:
+- search
+- mermaid2
+docs_dir: docs
+repo_url: https://github.com/cdoan1/static-site-starter
+edit_uri: edit/main/docs
+repo_name: cdoan1/static-site-starter
+markdown_extensions:
+- toc:
+    toc_depth: "2-2"
+- attr_list:
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- pymdownx.superfences:
+    # make exceptions to highlighting of code:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:mermaid2.fence_mermaid
+- pymdownx.snippets
+- admonition
+- pymdownx.details
+- pymdownx.tabbed:
+    alternate_style: true
