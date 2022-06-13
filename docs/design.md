@@ -122,6 +122,30 @@ oc patch
 
 #### Gitops procedure for upgrading RHACM 2.4 to RHACM 2.5:
 
+There is a known blocker [issue](https://bugzilla.redhat.com/show_bug.cgi?id=2095195) for upgrading RHACM from 2.4 to 2.5 when proxy addon is enabled. Following steps includes the workaround to do the upgrade with Gitops.
+
+1. Create PR update MultiClusterHub CR to disable proxy addon
+```
+spec:
+ enableClusterProxyAddon: false
+```
+2. Create PR to update ACM subscription
+```
+spec:
+ channel: release-2.5
+ installPlanApproval: Manual
+ name: advanced-cluster-management
+ source: redhat-operators
+ sourceNamespace: openshift-marketplace
+```
+3. Login to the OCP console to review and approve the install plan for release 2.5 upgrade.
+4. Waiting for 2.5 upgrade successful then create PR to update MultiClusterHub CR to enable proxy addon.
+```
+spec:
+ enableClusterProxyAddon: true
+```
+5. Delete the secret（cluster-proxy-signer） and let cluster-proxy-addon-manager to refresh it. 
+
 ### Alerts and Alert Management
 
 Stuff
