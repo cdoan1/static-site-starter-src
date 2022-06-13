@@ -120,7 +120,7 @@ oc patch
 4. Change the RHACM subacription channel to `release-2.5`.
 5. Select the version and apply to upgrade.
 
-Gitops procedure for upgrading RHACM 2.4 to RHACM 2.5:
+#### Gitops procedure for upgrading RHACM 2.4 to RHACM 2.5:
 
 ### Alerts and Alert Management
 
