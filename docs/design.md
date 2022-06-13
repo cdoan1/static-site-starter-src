@@ -45,7 +45,7 @@ Project: AOC
 ```mermaid
 graph LR
     AAP --> |OCP IPI| OCP
-    AAP --> |Openshift GitOps| OCP[OCP & ACM]
+    AAP --> |Openshift GitOps| OCP[OCP & RHACM]
     OCP --> |ArgoCD - Application & Configuration| OCP
     OCP --> |Policy| FLEET
 ```
@@ -53,7 +53,7 @@ graph LR
 Project: KCP
 ```mermaid
 graph LR
-    RHACM[RHACM*] --> |OCP IPI| OCP[OCP & ACM]
+    RHACM[RHACM*] --> |OCP IPI| OCP[OCP & RHACM]
     PIPELINE --> |Openshift GitOps| OCP
     OCP --> |ArgoCD - Application & Configuration| OCP
     OCP --> |Policy| FLEET
@@ -90,11 +90,37 @@ Stuff
 
 ### Upgrade - OCP
 
-Stuff
+We are following the following OCP upgrade policy:
+
+- The ACM SRE maintenance window is between Sunday night (CST) and Wednesday morning (CST).
+- OCP minor version release upgrades will happen during this window. 
+    - We will deploy the latest version, weekly.
+- OCP major version release upgrades will happen during this window.
+    - We will upgrade to the next release, 1 week after it is available.
+- Development stage is upgraded first.
+- Production(s) stage is upgraded next.
 
 ### Upgrade - ACM
 
-Stuff
+- The upgrade of RHACM will happen during the upgrade maintenance window from Sunday night (CST) to Wedneday morning (CST). This allows us to provide business hour support across the maintenance windown.
+- We will upgrade ACM on the maintenance window following the release of RHACM.
+- Development stage is upgraded first.
+- Production(s) stage is upgraded next.
+
+Manual procedure for upgrading RHACM 2.4 to RHACM 2.5:
+
+1. Ensure there is a OADP backup of RHACM
+2. Disable the backup and restore capability in the multiclusterhub operand
+3. Disable the clusterproxy capability in the multiclusterhub operand (See bz: )
+
+```bash
+oc patch
+```
+
+4. Change the RHACM subacription channel to `release-2.5`.
+5. Select the version and apply to upgrade.
+
+Gitops procedure for upgrading RHACM 2.4 to RHACM 2.5:
 
 ### Alerts and Alert Management
 
@@ -103,5 +129,3 @@ Stuff
 ### Observability
 
 Stuff
-
-
