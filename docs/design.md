@@ -122,7 +122,7 @@ oc patch
 
 #### Gitops procedure for upgrading RHACM 2.4 to RHACM 2.5:
 
-There is a known blocker [issue](https://bugzilla.redhat.com/show_bug.cgi?id=2095195) for upgrading RHACM from 2.4 to 2.5 when proxy addon is enabled base. Following steps includes the workaround to do the upgrade with Gitops.
+There is a known blocker [issue](https://bugzilla.redhat.com/show_bug.cgi?id=2095195) for upgrading RHACM from 2.4 to 2.5 when proxy addon is enabled. Following steps includes the workaround to do the upgrade with Gitops.
 
 1. Create PR update MultiClusterHub CR to disable proxy addon
 ```
